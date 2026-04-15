@@ -7,17 +7,17 @@ class Rt < Formula
   on_macos do
     on_arm do
       url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.0/rt-darwin-arm64-v1.0.0.tar.gz"
-      sha256 "9d24afe73db0169286f5c38df9ab73534d7e80f76999279b23439c47e4eda030"
+      sha256 "008ffa27f9a0eb56232e81ea5772b9f20888fdccb70f867f61e16a846b8583aa"
     end
     on_intel do
       url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.0/rt-darwin-x64-v1.0.0.tar.gz"
-      sha256 "01d5e3dd641ae39ca2b78d4c6543ada91bf22eaeff3c9c982c02ddf11b83070f"
+      sha256 "5e95c0043fe74beb7ba415a276218c6eb4342b19e322352f1ccb4b67c8ef9bfc"
     end
   end
 
   depends_on :macos
   depends_on "fzf"
-  depends_on "terminal-notifier" => :recommended
+  depends_on "tmux"
   depends_on "zellij" => :recommended
 
   def install
