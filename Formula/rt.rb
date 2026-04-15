@@ -7,11 +7,11 @@ class Rt < Formula
   on_macos do
     on_arm do
       url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.0/rt-darwin-arm64-v1.0.0.tar.gz"
-      sha256 "88b5a7430eeeb74113bb79f166a330faf23fcf1a865e9f2a0c0fd8963e7e7df5"
+      sha256 "80c4fe4de0b571b6dd571581fbc70cd854830ee9f3202ce7f947a42b82781cf2"
     end
     on_intel do
       url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.0/rt-darwin-x64-v1.0.0.tar.gz"
-      sha256 "2e0fcdc980252bd632ce48fa5181905a9e0f045b123a1a6aad14f5994a53e258"
+      sha256 "60f260985d27efcead6994bd490ad886b44696db7bfecf19ef48127dad11a016"
     end
   end
 
@@ -37,7 +37,10 @@ class Rt < Formula
         rt settings linear token
         rt settings gitlab token
 
-      Restart your terminal, then verify:
+      Verify the installation:
+        rt verify
+
+      Restart your terminal, then run for detailed diagnostics:
         rt doctor
     EOS
   end
