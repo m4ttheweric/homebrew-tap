@@ -7,11 +7,11 @@ class Rt < Formula
   on_macos do
     on_arm do
       url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.0/rt-darwin-arm64-v1.0.0.tar.gz"
-      sha256 "6282aea4362dd8ad4936bb6cfff06b463e31958ea6074e848a9615c43fc77200"
+      sha256 "ce69050feccab660b6daf9f4e8c7efcf94a8cbc2a4c4ec2a4de4c1816a0cdf1c"
     end
     on_intel do
       url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.0/rt-darwin-x64-v1.0.0.tar.gz"
-      sha256 "7ba69071afdaf48dd1e4d1497a7827602e36234c507cd11dbd7b766256b93b8f"
+      sha256 "87a7bd86a97a2c1a17fb7a9a5d2cac27c310077bbdfb622b0cf6d2566a7843db"
     end
   end
 
@@ -33,15 +33,15 @@ class Rt < Formula
 
   def caveats
     <<~EOS
-      Configure your API tokens:
+      Complete setup (tray app, daemon, shell integration):
+        rt --post-install
+
+      Then configure your API tokens:
         rt settings linear token
         rt settings gitlab token
 
       Verify the installation:
         rt verify
-
-      Restart your terminal, then run for detailed diagnostics:
-        rt doctor
     EOS
   end
 end
