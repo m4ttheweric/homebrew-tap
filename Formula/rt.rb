@@ -1,17 +1,17 @@
 class Rt < Formula
   desc "Developer CLI — branch management, service runner, daemon, notifications"
   homepage "https://github.com/m4ttheweric/repo-tools"
-  version "1.0.7"
+  version "1.0.8"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.7/rt-darwin-arm64-v1.0.7.tar.gz"
-      sha256 "9b150fd09539250891b64098f502f11e07c58d37cfa254c1bb2c18fe2f58c105"
+      url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.8/rt-darwin-arm64-v1.0.8.tar.gz"
+      sha256 "d1fb672462fdf935a97cb7896961ff5f5bae5918689352cb14cc6df24a9fe6f8"
     end
     on_intel do
-      url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.7/rt-darwin-x64-v1.0.7.tar.gz"
-      sha256 "322cd47a189d73c54e6a01482ecea75e3506c13637a4a23462706bb26116a49b"
+      url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.8/rt-darwin-x64-v1.0.8.tar.gz"
+      sha256 "b02677210f888a86bd84a0b01789c65d0b7cf11d5930745b3014a6d3f2a8b193"
     end
   end
 
@@ -25,23 +25,18 @@ class Rt < Formula
     prefix.install "rt-context.vsix"
   end
 
-  def post_install
-    # All setup logic lives in the binary — versioned alongside the code.
-    system bin / "rt", "--post-install"
-  end
-
+  # No post_install hook: Homebrew runs hooks in a sandbox that can't
+  # write to ~/Applications, ~/.rt, or shell rc files. Setup is handled
+  # by the binary on first invocation (or via `rt verify`).
 
   def caveats
     <<~EOS
-      Complete setup (tray app, daemon, shell integration):
-        rt --post-install
+      Complete setup + verify the install:
+        rt verify
 
       Then configure your API tokens:
         rt settings linear token
         rt settings gitlab token
-
-      Verify the installation:
-        rt verify
     EOS
   end
 end
