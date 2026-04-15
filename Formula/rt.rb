@@ -1,19 +1,17 @@
 class Rt < Formula
   desc "Developer CLI — branch management, service runner, daemon, notifications"
   homepage "https://github.com/m4ttheweric/repo-tools"
-  version "0.0.0"
+  version "1.0.0"
   license "MIT"
 
-  # This formula is auto-updated by GitHub Actions on each release.
-  # Install: brew install m4ttheweric/tap/rt
   on_macos do
     on_arm do
-      url "https://github.com/m4ttheweric/repo-tools/releases/download/v0.0.0/rt-darwin-arm64-v0.0.0.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.0/rt-darwin-arm64-v1.0.0.tar.gz"
+      sha256 "cc2e2622d813a72283eda4f18d25b3e319df87362553acc6dac520664468b77f"
     end
     on_intel do
-      url "https://github.com/m4ttheweric/repo-tools/releases/download/v0.0.0/rt-darwin-x64-v0.0.0.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.0/rt-darwin-x64-v1.0.0.tar.gz"
+      sha256 "abeb8442172a7f208688127e2522607d0476fd5a2019a4065add406f4c235de3"
     end
   end
 
@@ -41,10 +39,10 @@ class Rt < Formula
     system "cursor", "--install-extension", vsix, "--force" if which("cursor")
     system "code", "--install-extension", vsix, "--force" if which("code")
 
-    # Daemon (non-interactive)
+    # Daemon
     system bin / "rt", "daemon", "install", "--manual"
 
-    # Shell integration
+    # Shell integration (idempotent)
     zshrc = Pathname.new(Dir.home) / ".zshrc"
     marker = "# rt — repo tools"
     unless zshrc.exist? && zshrc.read.include?(marker)
