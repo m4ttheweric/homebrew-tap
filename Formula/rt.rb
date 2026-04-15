@@ -7,11 +7,11 @@ class Rt < Formula
   on_macos do
     on_arm do
       url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.0/rt-darwin-arm64-v1.0.0.tar.gz"
-      sha256 "cc2e2622d813a72283eda4f18d25b3e319df87362553acc6dac520664468b77f"
+      sha256 "e05691c16894f67c2c9296b2c721f1806d5933fb9a1c198e00a30ffdaf27edbc"
     end
     on_intel do
       url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.0/rt-darwin-x64-v1.0.0.tar.gz"
-      sha256 "abeb8442172a7f208688127e2522607d0476fd5a2019a4065add406f4c235de3"
+      sha256 "5fe2d9db6fb69aed77b01139e72a1613f576d3ad5f80cc5cc3db92592aa12623"
     end
   end
 
@@ -27,32 +27,10 @@ class Rt < Formula
   end
 
   def post_install
-    # Tray app → ~/Applications
-    apps_dir = Pathname.new(Dir.home) / "Applications"
-    apps_dir.mkpath
-    FileUtils.rm_rf(apps_dir / "rt-tray.app")
-    FileUtils.cp_r(prefix / "rt-tray.app", apps_dir / "rt-tray.app")
-    system "xattr", "-cr", (apps_dir / "rt-tray.app").to_s
-
-    # Extension → local editors
-    vsix = (prefix / "rt-context.vsix").to_s
-    system "cursor", "--install-extension", vsix, "--force" if which("cursor")
-    system "code", "--install-extension", vsix, "--force" if which("code")
-
-    # Daemon
-    system bin / "rt", "daemon", "install", "--manual"
-
-    # Shell integration (idempotent)
-    zshrc = Pathname.new(Dir.home) / ".zshrc"
-    marker = "# rt — repo tools"
-    unless zshrc.exist? && zshrc.read.include?(marker)
-      zshrc.open("a") do |f|
-        f.puts "", marker
-        f.puts 'rt-cd() { local dir=$(rt cd 2>/dev/null); [ -n "$dir" ] && cd "$dir"; }'
-        f.puts "alias rtcd='rt-cd'"
-      end
-    end
+    # All setup logic lives in the binary — versioned alongside the code.
+    system bin / "rt", "--post-install"
   end
+
 
   def caveats
     <<~EOS
