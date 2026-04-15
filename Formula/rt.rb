@@ -25,23 +25,14 @@ class Rt < Formula
     prefix.install "rt-context.vsix"
   end
 
-  def post_install
-    # All setup logic lives in the binary — versioned alongside the code.
-    system bin / "rt", "--post-install"
-  end
-
-
   def caveats
     <<~EOS
-      Complete setup (tray app, daemon, shell integration):
-        rt --post-install
+      Verify and complete setup (tray app, daemon, shell integration):
+        rt verify
 
       Then configure your API tokens:
         rt settings linear token
         rt settings gitlab token
-
-      Verify the installation:
-        rt verify
     EOS
   end
 end
