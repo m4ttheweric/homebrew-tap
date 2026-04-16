@@ -7,11 +7,11 @@ class Rt < Formula
   on_macos do
     on_arm do
       url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.14/rt-darwin-arm64-v1.0.14.tar.gz"
-      sha256 "313b3ef8aebfa4496109500102e6c9a0389d642dc8c3335e02eccd70010a778c"
+      sha256 "e7b441c71353c2e716a60a1a849599ef963d40cb9b47cbad938c1a5848284d49"
     end
     on_intel do
       url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.0.14/rt-darwin-x64-v1.0.14.tar.gz"
-      sha256 "dd7b1e131d8d856ef0d066ca365a26073fa1d4333283f885e5db6583dfb29040"
+      sha256 "d62707f6b5492147580037b757fc78a412a175a0fe6dc9f32248505c0fb21a7f"
     end
   end
 
