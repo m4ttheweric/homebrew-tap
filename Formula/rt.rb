@@ -1,17 +1,17 @@
 class Rt < Formula
   desc "Developer CLI — branch management, service runner, daemon, notifications"
   homepage "https://github.com/m4ttheweric/repo-tools"
-  version "1.3.3"
+  version "1.3.4"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.3.3/rt-darwin-arm64-v1.3.3.tar.gz"
-      sha256 "449a23992a764ce61be26c0130199f1440c8c707473669937674a8a26fe2cf25"
+      url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.3.4/rt-darwin-arm64-v1.3.4.tar.gz"
+      sha256 "d7d9cd7bb3728557ab8c4a85c150f7a3ad0b1e77fb6489f29c28aaafc20f11c4"
     end
     on_intel do
-      url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.3.3/rt-darwin-x64-v1.3.3.tar.gz"
-      sha256 "cf8031738551259684120fb0d957c217147fd4790a0aaab9aeefff2c258d1141"
+      url "https://github.com/m4ttheweric/repo-tools/releases/download/v1.3.4/rt-darwin-x64-v1.3.4.tar.gz"
+      sha256 "efe2bc816124991d0033ca4a378d7305af89f14f04bd62d401176487b7bbd409"
     end
   end
 
