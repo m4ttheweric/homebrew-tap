@@ -1,15 +1,13 @@
-# homebrew-tap
+# homebrew-tap (retired)
 
-Homebrew tap for [repo-tools](https://github.com/m4ttheweric/repo-tools).
+This tap is retired. `rt` is no longer distributed through Homebrew.
 
-## Install
+Install rt from the latest [GitHub Release](https://github.com/m4ttstack/rt/releases)
+(`./rt --post-install`), or through the mattstack.app installer. `rt update`
+upgrades in place.
 
-```bash
-brew install m4ttheweric/tap/rt
-```
-
-## Upgrade
+If you still have the tap:
 
 ```bash
-brew upgrade rt
+brew uninstall rt 2>/dev/null; brew untap m4ttheweric/tap
 ```
